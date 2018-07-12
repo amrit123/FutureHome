@@ -1,0 +1,93 @@
+<hr>
+<div class="search">
+    <div class="search-container">
+        <h1>Search Github Users</h1>
+        <p>Enter a Username To Fetch An Users Profile Info And Repos</p>
+        <input type="text" autofocus (keyup.enter)="getUserRepo(userName.value)" placeholder="Github Username..." [(ngModel)]="userName">
+        <button (click)="getUserRepo(userName.value)" type="button">Search</button>
+    </div>
+    <div class="error">
+        <p> {{errorMessege}}</p>
+    </div>
+</div>
+
+<!-- <div class="wrapper"> -->
+
+<!--  <div> -->
+<div class="user-detail-container" *ngIf="showUserDetails">
+
+    <div class="user-detail-image">
+        <img src="{{userdetails.avatar_url}}" alt="">
+        <br>
+        <br>
+        <a class="button" target="_blank" href="{{userdetails.html_url}}">view profile</a>
+    </div>
+    <div class="user-detail">
+        <h1>Users Details:</h1>
+        <h3>Name:{{userdetails.name}}</h3>
+        <h3>Created At:{{userdetails.created_at}}</h3>
+        <h3>Followers Count:{{userdetails.followers}}</h3>
+        <h3>Following:{{userdetails.following}}</h3>
+        <h3>Location:{{userdetails.location}}</h3>
+        <h3>Total Public Repo:{{userdetails.public_repos}}</h3>
+    </div>
+</div>
+<!-- </div> -->
+
+
+
+<!-- <div class="repo-container"> -->
+<h1 class="repo-heading" *ngIf="showRepoList">Latest Repositories:</h1>
+
+<div class="repo-list-detail" *ngIf="showRepoList">
+    <div class="repo-list" *ngFor="let repo of repoList">
+        <!-- <div class="repo_detail"> -->
+
+        <label>
+            <b>Repository Name:</b>
+        </label> {{repo.name}}
+        <br>
+        <label>
+            <b>Repository Description:</b>
+        </label>{{repo.description}}
+        <br>
+        <label>
+            <b>Created Date:</b>
+        </label>{{repo.created_at}}
+        <br>
+        <label>
+            <b>Fork:</b>
+        </label>{{repo.forks_count}}
+        <br>
+        <label>
+            <b>Watchers:</b>
+        </label>{{repo.watchers_count}}
+        <br>
+        <label>
+            <b>Language:</b>
+        </label>{{repo.language}}
+        <br>
+        <label>
+            <b>Open Issues:</b>
+        </label>{{repo.open_issues_count}}
+        <br>
+
+        <label>
+            <b>Last Updated:</b>
+        </label> {{repo.updated_at}}
+        <br>
+
+        <br>
+
+        <a class="button" target="_blank" href="{{repo.html_url}}">Repo page</a>
+
+
+
+        <!--  </div> -->
+    </div>
+
+
+</div>
+<!-- </div> -->
+
+<!-- </div> -->
